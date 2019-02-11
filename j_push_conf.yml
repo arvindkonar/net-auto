@@ -1,0 +1,30 @@
+---
+- name: Get Device Facts
+  hosts: r1
+  roles:
+    - Juniper.junos 
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Checking NETCONF connectivity
+      wait_for: 
+        host: "{{ inventory_hostname }}"
+        port: 22 
+        timeout: 5
+
+#    - name: Retrieving information from devices running Junos OS
+#      juniper_junos_facts:
+#        #savedir: "{{ playbook_dir }}"
+#        config_format: "set"
+      register: junos
+
+    - name: load configure file into device
+      junos_config:
+        src: srx.conf
+        comment: update config
+
+    - name: Print version
+      debug:
+        var: junos
+
