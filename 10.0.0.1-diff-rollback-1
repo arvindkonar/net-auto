@@ -1,0 +1,4 @@
+
+[edit system]
+-  host-name r1;
++  host-name r1.netauto;

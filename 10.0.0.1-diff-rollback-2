@@ -1,0 +1,6 @@
+
+[edit system]
+-  host-name r1;
++  host-name r1.netauto;
+[edit vlans test-vlan]
+-   l3-interface irb.20;

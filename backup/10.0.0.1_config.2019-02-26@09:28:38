@@ -1,0 +1,21 @@
+set version 15.1X49-D110.4
+set system host-name r1
+set system root-authentication encrypted-password "$5$mAoTSmf5$SoYC7PeKds7QHmU80CjIRhgVUZmgKAZH1ta0dH1dplD"
+set system login user labuser uid 2000
+set system login user labuser class super-user
+set system login user labuser authentication encrypted-password "$5$kGhupJFf$etHuo7FPHt2fvc5Di7HuHYqjIHJ0SpVMy42q9tXTpJA"
+set system services ssh
+set system services netconf ssh
+set system syslog user * any emergency
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system license autoupdate url https://ae1.juniper.net/junos/key_retrieval
+set interfaces ge-0/0/0 description "test-interface|new"
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.1.1/24
+set interfaces ge-0/0/0 unit 0 family inet address 10.0.1.2/24
+set interfaces fxp0 description "mgmt|10.0.0.1/24"
+set interfaces fxp0 unit 0 family inet address 10.0.0.1/24
+set vlans test-vlan description test-vlan
+set vlans test-vlan vlan-id 20
+set vlans test-vlan l3-interface irb.20

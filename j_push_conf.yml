@@ -17,12 +17,13 @@
 #      juniper_junos_facts:
 #        #savedir: "{{ playbook_dir }}"
 #        config_format: "set"
-      register: junos
 
     - name: load configure file into device
       junos_config:
+        #diff: yes
         src: srx.conf
         comment: update config
+      register: junos
 
     - name: Print version
       debug:

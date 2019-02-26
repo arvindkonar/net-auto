@@ -13,21 +13,24 @@
         port: 22 
         timeout: 5
 
-    - name: Show Version
-      junos_command:
-        commands: show version
-#        display: json
-
 #    - name: Retrieving information from devices running Junos OS
 #      juniper_junos_facts:
 #        #savedir: "{{ playbook_dir }}"
 #        config_format: "set"
       register: junos
 
-    - name: Print version
-      debug:
-        var: junos
+    - name: Backup Config
+      junos_config:
+        backup: yes
+#        backup_path: /backup/
+#        config_format: "json"
+        
+#    - name: load configure file into device
+#      junos_config:
+#        src: srx.conf
+#        comment: update config
 
-#    - name: collect default set of facts
-#      junos_facts:
-#        gather_subset: config
+#    - name: Print version
+#      debug:
+#        var: junos
+
