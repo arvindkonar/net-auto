@@ -1,0 +1,44 @@
+---
+- name: Get Device Facts
+  hosts: r4
+#  roles:
+#    - Juniper.junos 
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Checking NETCONF connectivity
+      wait_for: 
+        host: "{{ inventory_hostname }}"
+        port: 22 
+        timeout: 5
+
+    - name: Show Version
+      eos_command:
+        commands: show version | inc version
+#        display: json
+
+#    - name: Retrieving information from devices running Junos OS
+#      juniper_junos_facts:
+#        #savedir: "{{ playbook_dir }}"
+#        config_format: "set"
+      register: eos
+
+    - name: Print version
+      debug:
+        var: eos.stdout_lines
+
+    - name: wait for interface to be admin enabled
+      eos_command:
+          commands:
+              - show interface Ethernet3 | json
+          wait_for:
+          - "result[0].interfaces.Ethernet3.interfaceStatus eq connected"
+      register: eos1
+
+    - name: Print version
+      debug:
+        var: eos1.stdout_lines
+#    - name: collect default set of facts
+#      junos_facts:
+#        gather_subset: config

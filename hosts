@@ -11,6 +11,19 @@ ansible_password=evenet123@
 [r3]
 10.0.0.3
 
+[r3:vars]
+ansible_user=labuser
+ansible_password=evenet123@
+ansible_network_os=nxos
+
+[r4]
+10.0.0.4
+
+[r4:vars]
+ansible_user=labuser
+ansible_password=evenet123@
+ansible_network_os=eos
+
 [srx]
 10.0.0.1
 10.0.0.2

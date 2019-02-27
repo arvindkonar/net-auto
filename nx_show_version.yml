@@ -1,0 +1,18 @@
+---
+- name: Get Device Facts
+  hosts: r3
+#  roles:
+#    - Juniper.junos
+  connection: network_cli
+  gather_facts: no
+
+  tasks:
+  - name: Run show version and get exact version
+    nxos_command:
+     commands: "show version | include NXOS:"
+    register: response
+
+  - name: Print version
+    debug:
+      var: response.stdout_lines
+

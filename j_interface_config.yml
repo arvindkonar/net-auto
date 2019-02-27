@@ -14,6 +14,10 @@
         timeout: 5
       register: junos
 
+    - name: Print output
+      debug:
+        var: junos
+
     - name: Load Interface IP Config
       junos_l3_interface:
         name: ge-0/0/0
@@ -21,9 +25,9 @@
         ipv4: 10.0.1.1/24
       register: junos1
 
-    - name: Print
+    - name: Print output
       debug:
-        var: junos1.diff
+        var: junos1
 
     - name: Load interface Desciption Config
       junos_interface:
@@ -32,9 +36,9 @@
         #state: absent
       register: junos2
 
-    - name: Print
+    - name: Print output
       debug:
-        var: junos2.diff
+        var: junos2
 
 #    - name: Print
 #      debug:
