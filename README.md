@@ -8,7 +8,7 @@
 4. Automate mundane tasks
 
 # Playbooks currently working
-ansible-playbook j_show_version.yml
-ansible-playbook j_push_conf.yml 
-ansible-playbook j_rollback_conf.yml
-ansible-playbook j_push_conf.yml --diff ( To show diff )
+1. ansible-playbook j_show_version.yml
+2. ansible-playbook j_push_conf.yml 
+3. ansible-playbook j_rollback_conf.yml
+4. ansible-playbook j_push_conf.yml --diff ( To show diff )
