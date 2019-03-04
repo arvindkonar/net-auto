@@ -1,0 +1,7 @@
+# for one device, can be given like this:
+    hosts:
+      - device: 10.0.0.1
+        username : labuser
+        passwd: evenet123@
+    tests:
+      - test_no_diff.yml 

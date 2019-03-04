@@ -15,30 +15,22 @@
 
     - name: Show Version
       eos_command:
-        commands: show version | inc version
-#        display: json
-
-#    - name: Retrieving information from devices running Junos OS
-#      juniper_junos_facts:
-#        #savedir: "{{ playbook_dir }}"
-#        config_format: "set"
+        commands: show version | include version
+        #display: json
       register: eos
 
     - name: Print version
       debug:
-        var: eos.stdout_lines
+        var: eos.stdout
 
     - name: wait for interface to be admin enabled
       eos_command:
-          commands:
-              - show interface Ethernet3 | json
-          wait_for:
+        commands:
+          - show interface Ethernet3 | json
+        wait_for:
           - "result[0].interfaces.Ethernet3.interfaceStatus eq connected"
       register: eos1
 
     - name: Print version
       debug:
         var: eos1.stdout_lines
-#    - name: collect default set of facts
-#      junos_facts:
-#        gather_subset: config

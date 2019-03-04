@@ -1,23 +1,23 @@
 [r1]
 10.0.0.1
-
-[r1:vars]
-ansible_user=labuser
-ansible_password=evenet123@
-
+ 
 [r2]
 10.0.0.2
 
 [r3]
 10.0.0.3
 
+[r4]
+10.0.0.4
+
+[r1:vars]
+ansible_user=labuser
+ansible_password=evenet123@
+
 [r3:vars]
 ansible_user=labuser
 ansible_password=evenet123@
 ansible_network_os=nxos
-
-[r4]
-10.0.0.4
 
 [r4:vars]
 ansible_user=labuser

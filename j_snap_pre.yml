@@ -1,0 +1,24 @@
+---
+- name: Get Device Facts
+  hosts: r1
+  roles:
+    - Juniper.junos 
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Checking NETCONF connectivity
+      wait_for: 
+        host: "{{ inventory_hostname }}"
+        port: 22 
+        timeout: 5
+
+  tests_include:
+    - test_rpc_version
+    - test_interface
+
+#    - name: Take a pre-maintenance snapshot of the interfaces
+#      juniper_junos_jsnapy:
+#        action: "snap_pre"
+        #dir: "~/jsnapy/testfiles"
+#        config_file: "configuration_interface_status.yaml"
